@@ -1,0 +1,84 @@
+% Modifies \maketitle to include the \titlepic and \titletable
+%%%%%%% Example %%%%%%%
+%\title{{Fall Detection and Voice Communication \\using Zigbee}}
+%\titlepic{\includegraphics[width=0.6\textwidth]{Print_cutted.png}}
+%\author{Ren\'e Nilsson, Jeppe Nissen Odgaard\\in collaboration with Develco Products A/S}
+%\date{\today}
+%\titletable{
+% 	\begin{tabular}{|p{4cm}|p{10.8cm}|}
+% 	\hline
+% 	Group members: & Ren\'e Nilsson, electro engineering student, \href{mailto:10783@iha.dk}{10783@iha.dk}\\
+% 	& Jeppe Nissen Odgaard, electro engineering student, \href{mailto:10695@iha.dk}{10695@iha.dk}\\\hline
+% 	Project supervisor: & Henning Hargaard, associate professor, \href{mailto:hh@iha.dk}{hh@iha.dk}\\
+% 	&\\\hline
+% 	Institution: & Aarhus School of Engineering, \url{www.ase.iha.dk/en/}\\
+% 	&\\\hline
+% 	Project number: & 13021\\
+% 	&\\\hline
+% 	Delivery date: & December 18, 2013\\
+% 	&\\\hline
+% 	In collaboration with: & Develco Products A/S\\
+% 	&\\\hline
+% 	\end{tabular}
+% }
+
+% \begin{document}
+% \maketitle
+% ....
+%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\gdef\@tptopspace{\null\vfil}\gdef\@tpsepspace{\vskip 3em}
+
+% Very similar to the definition of \title, etc.
+\def\titlepic#1{\gdef\@titlepic{#1}}
+\def\@titlepic{\@empty} % default: no picture
+\def\titletable#1{\gdef\@titletable{#1}}
+\def\@titletable{\@empty} % default: no table
+\def\signatureFirst#1{\gdef\@signatureFirst{#1}}
+\def\signatureSecond#1{\gdef\@signatureSecond{#1}}
+\def\@signatureFirst{\@empty} % default: no signature
+\def\@signatureSecond{\@empty} % default: no signature
+
+\renewcommand\maketitle{
+\begin{titlepage}%
+\let\footnotesize\small
+\let\footnoterule\relax
+\let \footnote \thanks
+\@tptopspace%
+\begin{center}%
+{\Huge \@title \par} %Title
+\vskip 3em%
+{\centering\@titlepic\par} %Picture
+\@tpsepspace%
+%{\large \lineskip .75em%
+%\begin{tabular}[t]{c}%
+%\@author %author
+%\end{tabular}\par%
+%}%
+%\vskip 1.5em
+%{\large \@date \par} %Date
+%\vskip 1.5em
+{\centering\@titletable\par} %Table
+\vskip 3em
+{\centering\@signatureFirst\par} %SignatureFirst
+\vskip 2.5em
+{\centering\@signatureSecond\par} %SignatureSecond
+\end{center}\par
+\vfil
+\@thanks
+\end{titlepage}%
+\setcounter{footnote}{0}%
+\global\let\thanks\relax
+\global\let\maketitle\relax
+\global\let\@thanks\@empty
+\global\let\@author\@empty
+\global\let\@date\@empty
+\global\let\@title\@empty
+\global\let\@titlepic\@empty
+\global\let\title\relax
+\global\let\author\relax
+\global\let\date\relax
+\global\let\and\relax
+\global\let\titlepic\relax
+}
+\makeatother

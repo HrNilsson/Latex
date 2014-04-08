@@ -1,0 +1,16 @@
+%%%% EXAMPLE %%%%
+%\signatureFirst{\signature{Jeppe Nissen Odgaard}}
+%\signatureSecond{\signature{Ren\' e Nilsson}}
+%%%%%%%%%%%%%%%%%
+
+\newcommand{\signature}[2][2.5in]{%
+\noindent%
+\begin{tabular}{@{}p{#1}@{}}
+\\ \hline \\[-.75\normalbaselineskip]
+#2
+\end{tabular} \hspace{1in}
+\begin{tabular}{@{}p{#1}@{}}
+\\ \hline \\[-.75\normalbaselineskip]
+Date
+\end{tabular}
+}
