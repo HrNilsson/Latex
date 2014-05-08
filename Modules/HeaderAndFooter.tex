@@ -1,10 +1,28 @@
+% Example:
+% \makeHeaderAndFooter{Ren\'e Nilsson}
+% 
+% The header will contain a centered text: 'CHAPTER X: Chaptername', and a line beneath it. 
+% The header will not be displayed on the first page of a chapter.
+%
+% The footer will contain the argument in the left side, and the text 'x of y', where x is the current page, and y is the last page.
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\makeatletter
+\newcommand\makeHeaderAndFooter[1]{
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[C]{\leftmark}
-\rfoot{\thepage\ of \pageref{LastPage}}
-\lfoot{Ren\'e Nilsson 10783} 
-\cfoot{} %clear
-\fancypagestyle{plain}{%
-  \fancyhf{}\rfoot{\thepage\ of \pageref{LastPage}}
-  \lfoot{Ren\'e Nilsson 10783}%
+
+% Footer on non-first chapter pages:
+\lfoot{#1} % Name
+\cfoot{} % clear
+\rfoot{\thepage\ of \pageref{LastPage}} % page description
+
+% Footer on first chapter pages:
+\fancypagestyle{plain}{
+  \fancyhf{}\rfoot{\thepage\ of \pageref{LastPage}} % page description
+  \lfoot{#1} % Name
   \renewcommand{\headrulewidth}{0pt}}
+}
+\makeatother
