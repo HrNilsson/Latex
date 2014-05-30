@@ -23,3 +23,23 @@
   identifierstyle=\bfseries\color{black},
   stringstyle=\color{orange},
 }
+
+\lstdefinestyle{nesC}{ %use this for awesome C code
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  xleftmargin=\parindent,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{red!80!black},
+  commentstyle=\itshape\color{green!40!black},
+  identifierstyle=\color{black},
+  stringstyle=\color{orange},
+  moreemph=[1]{implementation, configuration, module,}, 
+  emphstyle =[1]\color{blue},
+  moreemph=[2]{components, as, interface, void, nx_uint8_t, nx_int8_t, message_t, nx_uint16_t, nx_int16_t, nx_uint32_t, nx_int32_t, uint8_t, int8_t, uint16_t, int16_t, uint32_t, int32_t}, 
+  emphstyle =[2]\color{purple},
+  moreemph=[3]{task, event, uses}, 
+  emphstyle =[3]\bf,
+}
+
