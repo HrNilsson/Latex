@@ -154,4 +154,7 @@ proguard/
 .DS_Store
 
 ##### Matlab #####
-.asv #Autosave files..
+*.asv #Autosave files..
+
+##### Uncompressed Data files #####
+*.nc
